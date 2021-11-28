@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from time import sleep
+from Credents.credents import *
 
 driver = webdriver.Chrome("chromedriver")
 
@@ -11,10 +12,10 @@ driver.get("https://www.instagram.com/")
 sleep(2)
 username = driver.find_element(By.NAME, "username")
 username.click()
-username.send_keys("_.__xo._.ox__._")
+username.send_keys(username1)
 pasw = driver.find_element(By.NAME, "password")
 pasw.click()
-pasw.send_keys("ahkps2334j")
+pasw.send_keys(password1)
 button = driver.find_element(By.XPATH, '//button[@type="submit"] ')
 button.click()
 sleep(4)
@@ -113,7 +114,7 @@ def like_all_posts():
 
 def test():
     sleep(2)
-    driver.get("https://www.instagram.com/_.Dharvi._")
+    driver.get("https://www.instagram.com/i.harsh.vardhan")
 
 
 
