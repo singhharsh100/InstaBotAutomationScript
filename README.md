@@ -1,3 +1,4 @@
+**Select Raw mode.
 # InstaBotAutomationScript
 This automated bot works on testing automation tool SELENIUM.
 **Make sure the version of chromedriver supports the version of Google chrome that you are using.
