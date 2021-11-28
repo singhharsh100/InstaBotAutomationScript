@@ -5,22 +5,23 @@ from time import sleep
 from Credents.credents import *
 
 driver = webdriver.Chrome("chromedriver")
-
 driver.maximize_window()
-
 driver.get("https://www.instagram.com/")
 sleep(2)
-username = driver.find_element(By.NAME, "username")
-username.click()
-username.send_keys(username1)
-pasw = driver.find_element(By.NAME, "password")
-pasw.click()
-pasw.send_keys(password1)
-button = driver.find_element(By.XPATH, '//button[@type="submit"] ')
-button.click()
-sleep(4)
-driver.find_element(By.XPATH, '//button[contains(text(),"Not Now")]').click()
-driver.find_element(By.XPATH, '//button[contains(text(),"Not Now")]').click()
+
+
+def login():
+    username = driver.find_element(By.NAME, "username")
+    username.click()
+    username.send_keys(username1)
+    pasw = driver.find_element(By.NAME, "password")
+    pasw.click()
+    pasw.send_keys(password1)
+    button = driver.find_element(By.XPATH, '//button[@type="submit"] ')
+    button.click()
+    sleep(4)
+    driver.find_element(By.XPATH, '//button[contains(text(),"Not Now")]').click()
+    driver.find_element(By.XPATH, '//button[contains(text(),"Not Now")]').click()
 
 
 def mass_like():
@@ -112,18 +113,13 @@ def like_all_posts():
         id.click()
         i = +1
 
-def test():
-    sleep(2)
-    driver.get("https://www.instagram.com/i.harsh.vardhan")
-
-
-
+# login()
 # mass_like()
-#like_fpost()
-#cmnt_post()
+# like_fpost()
+# cmnt_post()
 # stories()
-# check_msg()
-#follow()
+# check_msg()      *Few bugs
+# follow()
+# like_all_posts() *Few bufs
+# like_all_posts() *Not Working
 # driver.close()
-#like_all_posts()
-test()
