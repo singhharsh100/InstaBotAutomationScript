@@ -114,12 +114,11 @@ def like_all_posts():
         i = +1
 
 # login()
-# mass_like()
+# mass_like()      *Few bugs
 # like_fpost()
 # cmnt_post()
 # stories()
 # check_msg()      *Few bugs
 # follow()
-# like_all_posts() *Few bufs
-# like_all_posts() *Not Working
+# like_all_posts() *Few bugs
 # driver.close()
