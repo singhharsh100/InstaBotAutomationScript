@@ -1,6 +1,6 @@
 **Select Raw mode.
 # InstaBotAutomationScript
-This automated bot works on testing automation tool SELENIUM.
+This automated bot works on testing/automation tool SELENIUM.
 **Make sure the version of chromedriver supports the version of Google chrome that you are using.
 Driver--> ChromeDriver 96.0.4664.45
 Chrome version--> Version 96.0.4664.45(Latest)
@@ -10,7 +10,7 @@ Methods:
 login-                This method is used to login instagram with your provided credentials
                       **This method makes sure that the browser doesn't remembers the credentials by clicking "Not now" when prompted during login.
 mass_like-            This method likes posts which are shown in your instagram feeds.
-like_fpost-           This method opens the first post of your feed likes it.
+like_fpost-           This method opens the first post of your feed and likes it.
 cmnt_post-            This method comments on the respectived post which is opened. 
                       **This method must be used along with *like_fpost method. You can use it elsewhere too according to your needs.
 stories-              This method helps you to watch all the insta stories uploaded by people in your following list.
