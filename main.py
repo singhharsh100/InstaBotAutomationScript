@@ -85,7 +85,7 @@ def follow():
             get_button.click()
             i += 1
         except NoSuchElementException:
-            sleep(300)
+            sleep(120)
             driver.refresh()
             sleep(2)
 
@@ -99,26 +99,30 @@ def stories():
 
 def like_all_posts():
     sleep(2)
-    i = 0
-    search = driver.find_element(By.XPATH, ''' //input*[@aria-label='Search Input'] ''')
+    i = 1
+    search = driver.find_element(By.XPATH, '''/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[1]/div''')
     search.click()
-    search.click()
+    search1 = driver.find_element(By.XPATH, "//*[@id='react-root']/section/nav/div[2]/div/div/div[2]/input")
+    search1.click()
     sleep(2)
-    search.send_keys('_.Dharvi._')
+    search1.send_keys('i.harsh.vardhan')
     sleep(2)
-    while (i < 1):
+    while (i < 2):
         id = driver.find_element(By.XPATH,
-                                 '/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div[{}]/a/div'.format(
+                                 '/html/body/div[1]/section/nav/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div[{}]/a'.format(
                                      i))
         id.click()
-        i = +1
+        sleep(2)
+        driver.find_element(By.XPATH, "/html/body/div[1]/section/main/div/div[3]/article/div/div/div[1]/div[1]/a/div/div[2]").click()
+        i =+ 1
 
-# login()
+
+#login()
 # mass_like()      *Few bugs
 # like_fpost()
 # cmnt_post()
 # stories()
-# check_msg()      *Few bugs
+# check_msg()  # *Few bugs
 # follow()
-# like_all_posts() *Few bugs
+#like_all_posts()  # *Few bugs
 # driver.close()
