@@ -1,5 +1,7 @@
+import selenium
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver.common.by import By
 from time import sleep
 from Credents.credents import *
@@ -113,16 +115,75 @@ def like_all_posts():
                                      i))
         id.click()
         sleep(2)
-        driver.find_element(By.XPATH, "/html/body/div[1]/section/main/div/div[3]/article/div/div/div[1]/div[1]/a/div/div[2]").click()
-        i =+ 1
+        driver.find_element(By.XPATH,
+                            "/html/body/div[1]/section/main/div/div[3]/article/div/div/div[1]/div[1]/a/div/div[2]").click()
+        i = + 1
+        sleep(2)
+        driver.find_element(By.CLASS_NAME, "wpO6b  ").click()
+        driver.find_element(By.XPATH,
+                            "/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea").click()
+        driver.find_element(By.XPATH,
+                            "/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea").send_keys(
+            "(◓̀ ₒ ́◓)")
+        driver.find_element(By.XPATH, '//button[contains(text(),"Post")]').click()
 
 
-#login()
+def mass_spam():
+    i = 94
+    driver.find_element(By.XPATH,
+                        "/html/body/div[1]/section/main/section/div[3]/div[1]/div/div/div[2]/div[1]/div/div/a").click()
+    sleep(2)
+    while (True):
+        q = 10
+        sleep(2)
+        driver.find_element(By.XPATH, "/html/body/div[1]/section/main/div/header/section/ul/li[2]/a").click()
+        sleep(3)
+        driver.find_element(By.XPATH, "/html/body/div[6]/div/div/div[3]/ul/div/li[2]").click()
+        while (i > q):
+            try:
+                ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
+                sleep(3)
+                driver.find_element(By.XPATH, "/html/body/div[6]/div/div/div[3]").click()
+                ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
+                q = q + 6
+                sleep(6)
+                driver.find_element(By.XPATH,
+                                    "/html/body/div[6]/div/div/div[3]/ul/div/li[{}]/div/div[1]/div[2]/div[1]/span/a".format(
+                                        i)).click()
+                sleep(2)
+                driver.find_element(By.XPATH,
+                                    '//*[@id="react-root"]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button').click()
+                sleep(3)
+                msg = driver.find_element(By.XPATH,
+                                          "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")
+                msg.click()
+                sleep(2)
+                msg.send_keys("ヾ(＾-＾)ノ")
+                driver.find_element(By.XPATH, '//button[contains(text(),"Send")]').click()
+                sleep(2)
+                msg.send_keys("May all your troubles last as long as your New Year’s resolutions.")
+                driver.find_element(By.XPATH, '//button[contains(text(),"Send")]').click()
+                sleep(2)
+                msg.send_keys("Happy New Year!!")
+                driver.find_element(By.XPATH, '//button[contains(text(),"Send")]').click()
+                sleep(2)
+                driver.back()
+                driver.back()
+                sleep(3)
+                driver.refresh()
+                sleep(3)
+                i += 1
+            except selenium.common.exceptions.NoSuchElementException as exc:
+                driver.refresh()
+
+
+login()
 # mass_like()      *Few bugs
 # like_fpost()
 # cmnt_post()
 # stories()
 # check_msg()  # *Few bugs
 # follow()
-#like_all_posts()  # *Few bugs
+# like_all_posts()  # *Few bugs
 # driver.close()
+mass_spam()
