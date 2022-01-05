@@ -28,15 +28,20 @@ def login():
 
 def mass_like():
     i = 1
-    while i < 7:
-        likebutton = driver.find_element(By.XPATH,
-                                         "/html/body/div[1]/section/main/section/div/div[2]/div/article[{}]/div/div[3]/div/div/section[1]/span[1]/button".format(
-                                             i))
-        likebutton.click()
-        sleep(3)
-        i += 1
-        if i == 6:
-            i = 4
+    while True:
+        try:
+            likebutton = driver.find_element(By.XPATH,
+                                             "/html/body/div[1]/section/main/section/div/div[2]/div/article[{}]/div/div[3]/div/div/section[1]/span[1]/button".format(
+                                                 i))
+            likebutton.click()
+            sleep(3)
+            i += 1
+            if i == 6:
+                i = 4
+        except selenium.common.exceptions.NoSuchElementException:
+            break
+        except selenium.common.exceptions.ElementClickInterceptedException:
+            break
 
 
 def like_fpost():
@@ -60,7 +65,8 @@ def check_msg():
     messages = driver.find_element(By.XPATH, "/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[2]/a")
     messages.click()
     sleep(4)
-    driver.find_element(By.CSS_SELECTOR, ".qyrsm >font-weight=600").click()
+    driver.find_element(By.XPATH,
+                        '//*[@id="react-root"]/section/div/div[2]/div/div/div[1]/div[3]/div/div/div/div/div[1]/a').click()
     msg = driver.find_element(By.XPATH,
                               "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea")
     msg.click()
@@ -70,7 +76,7 @@ def check_msg():
     sleep(2)
     msg.send_keys("Hello there, kindly message on the other account please.")
     driver.find_element(By.XPATH, '//button[contains(text(),"Send")]').click()
-    sleep(2)
+    sleep(3)
     driver.back()
     driver.back()
 
@@ -96,7 +102,11 @@ def stories():
     driver.find_element(By.XPATH,
                         '/html/body/div[1]/section/main/section/div/div[1]/div/div/div/div/ul/li[3]/div/button').click()
     while True:
-        driver.find_element(By.XPATH, '/html/body/div[1]/section/div[1]/div/div[5]/section/div/button[2]/div').click()
+        try:
+            driver.find_element(By.XPATH,
+                                '/html/body/div[1]/section/div[1]/div/div[5]/section/div/button[2]/div').click()
+        except selenium.common.exceptions.NoSuchElementException:
+            break
 
 
 def like_all_posts():
@@ -107,7 +117,7 @@ def like_all_posts():
     search1 = driver.find_element(By.XPATH, "//*[@id='react-root']/section/nav/div[2]/div/div/div[2]/input")
     search1.click()
     sleep(2)
-    search1.send_keys('sagartandon')
+    search1.send_keys('rajshekhar')
     sleep(2)
 
     id = driver.find_element(By.XPATH,
@@ -182,17 +192,17 @@ def mass_spam():
                 driver.refresh()
                 sleep(3)
                 i += 1
-            except selenium.common.exceptions.NoSuchElementException as exc:
+            except selenium.common.exceptions.NoSuchElementException:
                 driver.refresh()
 
 
 login()
-# mass_like()      *Few bugs
 like_fpost()
 cmnt_post()
-# stories()
-# check_msg()  # *Few bugs
-# follow()
+mass_like()
+stories()
+check_msg()
+follow()
 like_all_posts()
-# driver.close()
-# mass_spam()
+driver.close()
+mass_spam()
