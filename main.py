@@ -107,7 +107,7 @@ def like_all_posts():
     search1 = driver.find_element(By.XPATH, "//*[@id='react-root']/section/nav/div[2]/div/div/div[2]/input")
     search1.click()
     sleep(2)
-    search1.send_keys('manyatiwari25')
+    search1.send_keys('sagartandon')
     sleep(2)
 
     id = driver.find_element(By.XPATH,
@@ -120,16 +120,18 @@ def like_all_posts():
     i = + 1
     sleep(3)
     while (True):
-        driver.find_element(By.XPATH,
-                            '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button/div[2]').click()
-        driver.find_element(By.XPATH,
-                            "/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea").click()
-        driver.find_element(By.XPATH,
-                            "/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea").send_keys(
-            "(◓̀ ₒ ́◓)")
-        sleep(2)
-        driver.find_element(By.XPATH, '//button[contains(text(),"Post")]').click()
-        sleep(4)
+        try:
+            driver.find_element(By.XPATH,
+                                '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button/div[2]').click()
+            driver.find_element(By.XPATH,
+                                "/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea").click()
+            driver.find_element(By.XPATH,
+                                "/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea").send_keys(
+                "(◓̀ ₒ ́◓)")
+            sleep(2)
+            driver.find_element(By.XPATH, '//button[contains(text(),"Post")]').click()
+        except selenium.common.exceptions.NoSuchElementException:
+            pass
         driver.find_element(By.XPATH,
                             "//button[@class='wpO6b  ']//*[local-name() = 'svg'][@aria-label='Next']").click()
         sleep(3)
@@ -186,11 +188,11 @@ def mass_spam():
 
 login()
 # mass_like()      *Few bugs
-#like_fpost()
-#cmnt_post()
+like_fpost()
+cmnt_post()
 # stories()
 # check_msg()  # *Few bugs
 # follow()
-#like_all_posts()
+like_all_posts()
 # driver.close()
 # mass_spam()
